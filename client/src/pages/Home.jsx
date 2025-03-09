@@ -1,14 +1,14 @@
 import Headers from '../components/Header'
-// import SpecialityMenu from '../components/SpecialityMenu'
-// import TopDoctors from '../components/TopDoctors'
+import Menu from '../components/Menu'
+import Services from '../components/Services'
 import Banner from '../components/Banner'
 
 const Home = () => {
   return (
     <div>
       <Headers />
-      {/* <SpecialityMenu />
-      <TopDoctors /> */}
+      <Menu />
+      <Services /> 
       <Banner /> 
     </div>
   )
