@@ -100,7 +100,7 @@ const AllAppointments = () => {
           </div>
         ))}
       </div>
-    </div>
+    </div> 
   );
 };
 
