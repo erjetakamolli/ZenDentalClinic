@@ -6,6 +6,7 @@ const User = require('../models/User');
 const path = require('path');
 const fs = require('fs');
 const cloudinary = require('../utils/cloudinary');
+const jwt = require('jsonwebtoken');
 
 // @desc    Admin login
 // @route   POST /api/admin/login
@@ -42,8 +43,12 @@ exports.login = async (req, res) => {
       });
     }
 
+    console.log("SECRET USED FOR SIGNING:", process.env.ADMIN_JWT_SECRET);
+
     // Create token
-    const token = admin.getSignedJwtToken();
+    const token = jwt.sign({ id: admin._id }, process.env.ADMIN_JWT_SECRET, {
+          expiresIn: process.env.ADMIN_JWT_EXPIRE
+        });
 
     res.status(200).json({
       success: true,
@@ -319,21 +324,21 @@ exports.addService = async (req, res) => {
     }
 
     // Check if image is uploaded
-    if (!req.files || !req.files.image) {
-      return res.status(400).json({
-        success: false,
-        message: 'Please upload an image'
-      });
-    }
+    // if (!req.files || !req.files.image) {
+    //   return res.status(400).json({
+    //     success: false,
+    //     message: 'Please upload an image'
+    //   });
+    // }
 
-    const file = req.files.image;
+    // const file = req.files.image;
 
-    // Upload image to cloudinary
-    const result = await cloudinary.uploader.upload(file.tempFilePath, {
-      folder: 'zendental/services',
-      width: 300,
-      crop: 'scale'
-    });
+    // // Upload image to cloudinary
+    // const result = await cloudinary.uploader.upload(file.tempFilePath, {
+    //   folder: 'zendental/services',
+    //   width: 300,
+    //   crop: 'scale'
+    // });
 
     // Create service
     const service = await Service.create({
@@ -341,7 +346,7 @@ exports.addService = async (req, res) => {
       description,
       available: available === 'true' || available === true,
       fees: fees || 100,
-      image: result.secure_url
+      image: ""
     });
 
     res.status(201).json({

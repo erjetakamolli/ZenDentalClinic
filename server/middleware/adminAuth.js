@@ -11,6 +11,7 @@ exports.protect = async (req, res, next) => {
     token = req.headers.atoken;
   }
 
+  console.log("REQ", token);
   // Check if token exists
   if (!token) {
     return res.status(401).json({
@@ -35,6 +36,7 @@ exports.protect = async (req, res, next) => {
 
     next();
   } catch (err) {
+    console.error("JWT Verification Error:", err.message);
     return res.status(401).json({
       success: false,
       message: 'Not authorized to access this route'

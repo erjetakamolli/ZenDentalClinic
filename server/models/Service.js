@@ -13,7 +13,7 @@ const ServiceSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    required: [true, 'Please add an image']
+    required: [false, 'Please add an image']
   },
   available: {
     type: Boolean,
