@@ -42,10 +42,10 @@ const Sidebar = () => {
                 isActive ? "bg-[#F2F3FF] border-r-4 border-primary" : ""
               }`
             }
-            to={"/add-doctor"}
+            to={"/add-service"}
           >
             <img src={assets.add_icon} alt="" />
-            <p className="hidden md:block">Add Doctor</p>
+            <p className="hidden md:block">Add Service</p>
           </NavLink>
 
           <NavLink
@@ -54,10 +54,10 @@ const Sidebar = () => {
                 isActive ? "bg-[#F2F3FF] border-r-4 border-primary" : ""
               }`
             }
-            to={"/doctor-list"}
+            to={"/service-list"}
           >
             <img src={assets.people_icon} alt="" />
-            <p className="hidden md:block">Doctors List</p>
+            <p className="hidden md:block">Service List</p>
           </NavLink>
         </ul>
       )}

@@ -10,7 +10,8 @@ const {
   getDashboardData,
   addService,
   getAllServices,
-  changeServiceAvailability
+  changeServiceAvailability,
+  registerAdmin
 } = require('../controllers/adminController');
 
 // Public routes
@@ -25,5 +26,6 @@ router.get('/dashboard', protect, getDashboardData);
 router.post('/add-service', protect, addService);
 router.get('/services', protect, getAllServices);
 router.post('/change-service-availability', protect, changeServiceAvailability);
+router.post('/register', registerAdmin)
 
 module.exports = router;

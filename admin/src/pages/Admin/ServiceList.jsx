@@ -5,17 +5,17 @@ const ServiceList = () => {
   const { services, aToken, getAllServices, changeServiceAvailability } =
     useContext(AdminContext);
 
-  useEffect(() => {
-    if (aToken) {
-      getAllServices();
-    }
-  }, [aToken, getAllServices]);
+  // useEffect(() => {
+  //   if (aToken) {
+  //     getAllServices();
+  //   }
+  // }, []);
 
   return (
     <div className="m-5 max-h-[90vh] overflow-y-scroll">
       <h1 className="text-lg font-medium">All Services</h1>
       <div className="w-full flex flex-wrap gap-4 pt-5 gap-y-6">
-        {services.map((item, index) => (
+        {services && services.map((item, index) => (
           <div
             className="border border-indigo-200 rounded-xl max-w-56 overflow-hidden cursor-pointer group"
             key={index}

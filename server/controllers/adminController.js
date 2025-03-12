@@ -58,6 +58,37 @@ exports.login = async (req, res) => {
   }
 };
 
+exports.registerAdmin = async(req, res) =>{
+  const { name, email, password } = req.body;
+
+    // Check if all fields are provided
+    if (!name || !email || !password) {
+        return next(new ErrorResponse('Please provide all fields', 400));
+    }
+
+    // Check if admin already exists
+    const existingAdmin = await Admin.findOne({ email });
+    if (existingAdmin) {
+        return next(new ErrorResponse('Admin already exists', 400));
+    }
+
+    // Create admin
+    const admin = await Admin.create({ name, email, password });
+
+    // Generate token
+    const token = admin.getSignedJwtToken();
+
+    res.status(201).json({
+        success: true,
+        data: {
+            id: admin._id,
+            name: admin.name,
+            email: admin.email,
+            token
+        }
+    });
+}
+
 // @desc    Get all doctors
 // @route   POST /api/admin/all-doctors
 // @access  Private (Admin only)
