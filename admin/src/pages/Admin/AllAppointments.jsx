@@ -104,4 +104,4 @@ const AllAppointments = () => {
   );
 };
 
-export default AllAppointments;
+export default AllAppointments;  
