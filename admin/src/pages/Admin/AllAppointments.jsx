@@ -105,3 +105,4 @@ const AllAppointments = () => {
 };
 
 export default AllAppointments;  
+
