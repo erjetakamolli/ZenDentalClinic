@@ -16,12 +16,9 @@ const AddService = () => {
     event.preventDefault();
 
     try {
-      if (!serviceImg) {
-        return toast.error("Image Not Selected");
-      }
+     
 
       const formData = new FormData();
-      formData.append("image", serviceImg);
       formData.append("name", name);
       formData.append("description", description);
       formData.append("available", available);
@@ -51,7 +48,7 @@ const AddService = () => {
     <form onSubmit={onSubmitHandler} className="m-5 w-full">
       <p className="mb-3 text-lg font-medium">Add Service</p>
       <div className="bg-white px-8 py-8 border rounded w-full max-w-4xl">
-        <div className="flex items-center gap-4 mb-8 text-gray-500">
+        {/* <div className="flex items-center gap-4 mb-8 text-gray-500">
           <label htmlFor="service-img">
             <img
               className="w-16 bg-gray-100 rounded-full cursor-pointer"
@@ -66,7 +63,7 @@ const AddService = () => {
             hidden
           />
           <p>Upload service image</p>
-        </div>
+        </div> */}
 
         <div className="flex flex-col gap-4 text-gray-600">
           <div className="flex flex-col gap-1">

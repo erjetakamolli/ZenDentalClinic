@@ -1,15 +1,33 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AdminContext } from "../../context/AdminContext";
+import axios from "axios";
 
 const ServiceList = () => {
-  const { services, aToken, getAllServices, changeServiceAvailability } =
-    useContext(AdminContext);
+  const {aToken } = useContext(AdminContext);
+  const [services, setServices] = useState([]);
 
-  // useEffect(() => {
-  //   if (aToken) {
-  //     getAllServices();
-  //   }
-  // }, []);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
+
+  const getAllServices = async () => {
+    try {
+      const { data } = await axios.get(backendUrl + "/api/admin/services", {
+        headers: { aToken },
+      });
+
+      if (data.services) {
+        setServices(data.services);
+      } else {
+      }
+    } catch (error) {
+    }
+  };
+
+  useEffect(() => {
+    getAllServices();
+  }, []);
+
+  console.log('services', services)
 
   return (
     <div className="m-5 max-h-[90vh] overflow-y-scroll">
@@ -31,12 +49,11 @@ const ServiceList = () => {
               </p>
               <p className="text-zinc-600 text-sm">{item.description}</p>
               <div className="mt-2 flex items-center gap-1 text-sm">
-                <input
-                  onChange={() => changeServiceAvailability(item._id)}
-                  type="checkbox"
-                  checked={item.available}
-                />
-                <p>Available</p>
+                
+                {
+                  item.available ?  <p>Available</p> :  <p>Not available</p>
+                }
+               
               </div>
             </div>
           </div>
