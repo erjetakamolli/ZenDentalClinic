@@ -109,7 +109,7 @@ const AddService = () => {
         >
           Add Service
         </button>
-      </div>
+      </div> 
     </form>
   );
 };
