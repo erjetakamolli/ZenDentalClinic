@@ -63,7 +63,7 @@ const AllAppointments = () => {
           <p>Actions</p>
         </div>
 
-        {dummyAppointments.map((item, index) => (
+        {/* {dummyAppointments.map((item, index) => (
           <div
             className="flex flex-wrap justify-between max-sm:gap-2 sm:grid sm:grid-cols-[0.5fr_3fr_1fr_3fr_1fr_1fr] items-center text-gray-500 py-3 px-6 border-b hover:bg-gray-50"
             key={index}
@@ -98,7 +98,7 @@ const AllAppointments = () => {
               />
             )}
           </div>
-        ))}
+        ))} */}
       </div>
     </div> 
   );
