@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { AdminContext } from "../../context/AdminContext";
 
 const ServiceList = () => {
@@ -9,7 +9,7 @@ const ServiceList = () => {
     if (aToken) {
       getAllServices();
     }
-  }, [aToken]);
+  }, [aToken, getAllServices]);
 
   return (
     <div className="m-5 max-h-[90vh] overflow-y-scroll">
