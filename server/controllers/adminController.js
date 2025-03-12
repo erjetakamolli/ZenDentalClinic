@@ -43,7 +43,7 @@ exports.login = async (req, res) => {
       });
     }
 
-    console.log("SECRET USED FOR SIGNING:", process.env.ADMIN_JWT_SECRET);
+    
 
     // Create token
     const token = jwt.sign({ id: admin._id }, process.env.ADMIN_JWT_SECRET, {
